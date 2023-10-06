@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Admission 23: Class Outline</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Include Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Include "Hind Siliguri" font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Add custom CSS for styling -->
+  <style>
+    /* Use "Hind Siliguri" font for headings */
+    :root {
+      --arrow-bg: rgba(255, 136, 103, 0.6);
+      --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
+      --option-bg: white;
+      --select-bg: rgba(255, 136, 103, 0.4);
+    }
+
+    h2 {
+      font-family: 'Hind Siliguri', sans-serif;
+      color: rgba(255, 136, 103, 1);
+      display: flex;
+      align-items: center;
+      font-size: 35px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    /* Style the class notice */
+    .class-notice {
+      font-family: 'Hind Siliguri', sans-serif;
+      background: linear-gradient(90deg, rgba(255, 136, 103, 1) 25%, rgba(238, 168, 73, 1) 76%);
+      padding: 10px;
+      padding-bottom: 30px;
+      border: 1px solid #dcdcdc;
+      border-radius: 15px;
+      margin-top: 20px;
+      font-size: 20px;
+      color: white;
+      text-align: center;
+    }
+
+    /* Style the navigation buttons */
+    .nav-button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      background: linear-gradient(90deg, rgba(255, 136, 103, 1) 25%, rgba(238, 168, 73, 1) 76%);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      font-weight: bold;
+      border: solid 2px white;
+    }
+
+    /* Adjust the icon size and vertical alignment */
+    i.material-icons {
+      font-size: 20px;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    h2 i.material-icons {
+      font-size: 40px;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    /* Style the circular meters */
+    .circular-meter-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+      /*
+      margin-left: 15px;
+      margin-right: 15px;
+      */
+      /*Hehe*/
+      position: relative;
+      max-width: 450px;
+      left: 50%;
+      transform: translateX(-50%);
+
+    }
+
+    .circular-meter {
+      width: 75px;
+      height: 75px;
+      position: relative;
+    }
+
+    .circle {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #fff;
+      position: relative;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .mask {
+      width: 50%;
+      height: 100%;
+      position: absolute;
+      clip: rect(0, 100px, 100px, 50px);
+      border-radius: 50%;
+    }
+
+    .mask.full {
+      transform: rotate(0deg);
+    }
+
+    .mask.half {
+      transform: rotate(180deg);
+    }
+
+    .fill {
+      width: 100%;
+      height: 100%;
+      background-color: #007bff;
+      border-radius: 50%;
+    }
+
+    .fill.fix {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      clip: rect(0, 50px, 100px, 0);
+      border-radius: 50%;
+    }
+
+    .shadow {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .percentage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: rgba(255, 136, 103, 1);
+    }
+
+    span {
+      font-weight: bold;
+    }
+
+    select {
+      /* Reset */
+      appearance: none;
+      border: 0;
+      outline: 0;
+      font: inherit;
+      /* Personalize */
+      width: 20rem;
+      padding: 1rem 4rem 1rem 1rem;
+      background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
+        linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
+      color: white;
+      border-radius: 0.25em;
+      box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+
+      /* Remove IE arrow */
+      &::-ms-expand {
+        display: none;
+      }
+
+      /* Remove focus outline */
+      &:focus {
+        outline: none;
+      }
+
+      /* <option> colors */
+      option {
+        color: white;
+        background-color: var(--option-bg);
+      }
+  </style>
+</head>
+
+<body <div class="container">
+  <h2><i class="material-icons">school</i><b>ACS Engineering Routine</b></h2>
+  <div class="class-notice" id="upcoming-class-notice">
+    <h3><strong>Upcoming Class:</strong></h3>
+    <p>
+      <i class="material-icons">calendar_today</i>Date: <span id="class-date"></span>
+    </p>
+    <p>
+      <i class="material-icons">event</i>Day: <span id="class-day"></span>
+    </p>
+    <p>
+      <i class="material-icons">access_time</i>Class Time: <span id="class-time"></span>
+    </p>
+    <p>
+      <i class="material-icons">subject</i>Subject: <span id="class-subject"></span>
+    </p>
+    <p>
+      <i class="material-icons">description</i>Chapter/Topic: <span id="class-topic"></span>
+    </p>
+    <p>
+      <i class="material-icons">person</i>Instructor: <span id="class-instructor"></span>
+    </p>
+    <div class="circular-meter-container">
+      <div class="circular-meter" id="day-meter">
+        <div class="circle">
+          <div class="mask full">
+            <div class="fill"></div>
+          </div>
+          <div class="mask half">
+            <div class="fill"></div>
+            <div class="fill fix"></div>
+          </div>
+          <div class="shadow"></div>
+        </div>
+        <div class="percentage">
+          <span id="day-timer">50%</span>
+        </div>
+      </div>
+      <div class="circular-meter" id="hour-meter">
+        <div class="circle">
+          <div class="mask full">
+            <div class="fill"></div>
+          </div>
+          <div class="mask half">
+            <div class="fill"></div>
+            <div class="fill fix"></div>
+          </div>
+          <div class="shadow"></div>
+        </div>
+        <div class="percentage">
+          <span id="hour-timer">50%</span>
+        </div>
+      </div>
+      <div class="circular-meter" id="minute-meter">
+        <div class="circle">
+          <div class="mask full">
+            <div class="fill"></div>
+          </div>
+          <div class="mask half">
+            <div class="fill"></div>
+            <div class="fill fix"></div>
+          </div>
+          <div class="shadow"></div>
+        </div>
+        <div class="percentage">
+          <span id="minute-timer">50%</span>
+        </div>
+      </div>
+      <div class="circular-meter" id="second-meter">
+        <div class="circle">
+          <div class="mask full">
+            <div class="fill"></div>
+          </div>
+          <div class="mask half">
+            <div class="fill"></div>
+            <div class="fill fix"></div>
+          </div>
+          <div class="shadow"></div>
+        </div>
+        <div class="percentage">
+          <span id="second-timer">50%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Buttons -->
+
+  <div class="text-center mt-4">
+    <button class="btn btn-secondary nav-button" onclick="showPreviousClass()">
+      <i class="material-icons">keyboard_arrow_left</i>Previous
+    </button>
+    <button class="btn btn-primary nav-button" onclick="showNextClass()">
+      Next<i class="material-icons">keyboard_arrow_right</i>
+    </button>
+    <button class="btn btn-info nav-button" onclick="showUpcomingClass()">
+      <i class="material-icons">home</i>Home
+    </button>
+
+  </div>
+  </div>
+  <div class="class-notice">
+    <div class="container mt-5">
+
+      <form id="chapterForm">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+
+            <select class="form-control" id="subject" name="subject">
+              <option value="Physics">Physics</option>
+              <option value="Chemistry">Chemistry</option>
+              <option value="Math">Mathematics</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+
+            <select class="form-control" id="paper" name="paper">
+              <!-- Paper options will be populated dynamically -->
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+
+            <select class="form-control" id="chapter" name="chapter">
+              <!-- Chapter options will be populated dynamically -->
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <button type="button" class="btn btn-info nav-button" id="generateLink">Visit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <button style="justify-content:center; align-items:center; position: absolute;
+      left: 50%;
+      transform: translateX(-50%); margin-bottom: 20px;" class="btn btn-info nav-button"
+    onclick="window.location.href='https://engineering23.aparsclassroom.com'">
+    <i class="material-icons">language</i>Go to Webapp
+  </button>
+
+  <!-- Include Bootstrap JS and jQuery (required for Bootstrap) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // JSON data
+    const classOutlineData = [
+      {
+        "date": "Phase - 1",
+        "day": "",
+        "classTime": "",
+        "subject": "Physics",
+        "chapterTopic": "ভেক্টর (1-5)",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "Phase - 1",
+        "day": "",
+        "classTime": "",
+        "subject": "Math",
+        "chapterTopic": "ম্যাট্রিক্স ও নির্ণায়ক (1-2)",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "Phase - 1",
+        "day": "",
+        "classTime": "",
+        "subject": "Chemistry",
+        "chapterTopic": "গুণগত রসায়ন (1-3)",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "6 October 2023",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "গুণগত রসায়ন - 4",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "7 October 2023",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "পদার্থের গাঠনিক ধর্ম - 1",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "8 October 2023",
+        "day": "Sunday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "9 October 2023",
+        "day": "Monday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "জটিল সংখ্যা - 1",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "10 October 2023",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "গুণগত রসায়ন - 5",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "11 October 2023",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "পদার্থের গাঠনিক ধর্ম - 2",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "12 October 2023",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "জটিল সংখ্যা - 2",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "13 October 2023",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "গুণগত রসায়ন - 6 (MCQ Booster + Question Bank Analysis)",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "14 October 2023",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "মহাকর্ষ ও অভিকর্ষ - 1",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "15 October 2023",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "বহুপদী ও বহুপদী সমীকরণ - 1",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "16 October 2023",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "17 October 2023",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "মৌলের পর্যাবৃত্ত ধর্ম - 1",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "18 October 2023",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "মহাকর্ষ ও অভিকর্ষ - 2",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "19 October 2023",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "বহুপদী ও বহুপদী সমীকরণ - 2",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "20 October 2023",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "মৌলের পর্যাবৃত্ত ধর্ম - 2",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "21 October 2023",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "মহাকর্ষ ও অভিকর্ষ - 3",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "22 October 2023",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "সরলরেখা - 1",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "23 October 2023",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "24 October 2023",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "মৌলের পর্যাবৃত্ত ধর্ম - 3",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "25 October 2023",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "পর্যাবৃত্ত গতি - 1",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "26 October 2023",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "সরলরেখা - 2",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "27 October 2023",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "মৌলের পর্যাবৃত্ত ধর্ম - 4",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "28 October 2023",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "পর্যাবৃত্ত গতি - 2",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "29 October 2023",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "সরলরেখা - 3",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "30 October 2023",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "31 October 2023",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "মৌলের পর্যাবৃত্ত ধর্ম - 5",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "1 November 2023",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "পর্যাবৃত্ত গতি - 3",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "2 November 2023",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "সরলরেখা - 4",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "3 November 2023",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "মৌলের পর্যাবৃত্ত ধর্ম - 6 (MCQ Booster & Question Bank Analysis)",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "4 November 2023",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "নিউটনীয় বলবিদ্যা - 1",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "5 November 2023",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "কণিক - 1",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "6 November 2023",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "7 November 2023",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "রাসায়নিক পরিবর্তন - 1",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "8 November 2023",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "নিউটনীয় বলবিদ্যা - 2",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "9 November 2023",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "কণিক - 2",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "10 November 2023",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "রাসায়নিক পরিবর্তন - 2",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "11 November 2023",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "নিউটনীয় বলবিদ্যা - 3",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "12 November 2023",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "কণিক - 3",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "13 November 2023",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "14 November 2023",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "রাসায়নিক পরিবর্তন - 3",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "15 November 2023",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "নিউটনীয় বলবিদ্যা - 4",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "16 November 2023",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "বৃত্ত - 1",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "17 November 2023",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "রাসায়নিক পরিবর্তন - 4",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "18 November 2023",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "নিউটনীয় বলবিদ্যা - 5",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "19 November 2023",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "বৃত্ত - 2",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "20 November 2023",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "21 November 2023",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "রাসায়নিক পরিবর্তন - 5",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "22 November 2023",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "তাপগতিবিদ্যা - 1",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "23 November 2023",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "বৃত্ত - 3",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "24 November 2023",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "রাসায়নিক পরিবর্তন - 6",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "25 November 2023",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "তাপগতিবিদ্যা - 2",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "26 November 2023",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "সংযুক্ত কোণের ত্রিকোণমিতিক অনুপাত - 1",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "27 November 2023",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "28 November 2023",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "রাসায়নিক পরিবর্তন - 7 (MCQ Booster & Question Bank Analysis)",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "29 November 2023",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "তাপগতিবিদ্যা - 3",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "30 November 2023",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "সংযুক্ত কোণের ত্রিকোণমিতিক অনুপাত - 2",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "1 December 2023",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "কর্মমুখী রসায়ন",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "2 December 2023",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "তাপগতিবিদ্যা - 4",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "3 December 2023",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "সংযুক্ত কোণের ত্রিকোণমিতিক অনুপাত - 3",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "4 December 2023",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "5 December 2023",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "পরিবেশ রসায়ন - 1",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "6 December 2023",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "কাজ, শক্তি, ক্ষমতা - 1",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "7 December 2023",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "বিপরীত ত্রিকোণমিতিক ফাংশন - 1",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "8 December 2023",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "পরিবেশ রসায়ন - 2",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "9 December 2023",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "কাজ, শক্তি, ক্ষমতা - 2",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "10 December 2023",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "বিপরীত ত্রিকোণমিতিক ফাংশন - 2",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "11 December 2023",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "12 December 2023",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "পরিবেশ রসায়ন - 3",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "13 December 2023",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "কাজ, শক্তি, ক্ষমতা - 3",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "14 December 2023",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "অন্তরীকরণ - 1",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "15 December 2023",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "পরিবেশ রসায়ন - 4",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "16 December 2023",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "আধুনিক পদার্থবিজ্ঞান - 1",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "17 December 2023",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "অন্তরীকরণ - 2",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "18 December 2023",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "19 December 2023",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "পরিবেশ রসায়ন - 5 (MCQ Booster & Question Bank Analysis)",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "20 December 2023",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "আধুনিক পদার্থবিজ্ঞান - 2",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "21 December 2023",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "অন্তরীকরণ - 3",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "22 December 2023",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "পরিমাণগত রসায়ন - 1",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "23 December 2023",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "আধুনিক পদার্থবিজ্ঞান - 3",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "24 December 2023",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "অন্তরীকরণ - 4",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "25 December 2023",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "26 December 2023",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "পরিমাণগত রসায়ন - 2",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "27 December 2023",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "স্থির তড়িৎ - 1",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "28 December 2023",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "যোগজীকরণ - 1",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "29 December 2023",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "পরিমাণগত রসায়ন - 3",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "30 December 2023",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "স্থির তড়িৎ - 2",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "31 December 2023",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "যোগজীকরণ - 2",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "1 January 2024",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "2 January 2024",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "পরিমাণগত রসায়ন - 4(MCQ Booster & Question Bank Analysis)",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "3 January 2024",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "স্থির তড়িৎ - 3",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "4 January 2024",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "যোগজীকরণ - 3",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "5 January 2024",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "তড়িৎ রসায়ন - 1",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "6 January 2024",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "স্থির তড়িৎ - 4",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "7 January 2024",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "যোগজীকরণ - 4",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "8 January 2024",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "9 January 2024",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "তড়িৎ রসায়ন - 2",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "10 January 2024",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "ভৌত আলোকবিজ্ঞান - 1",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "11 January 2024",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "স্থিতিবিদ্যা - 1",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "12 January 2024",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "তড়িৎ রসায়ন - 3",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "13 January 2024",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "ভৌত আলোকবিজ্ঞান - 2",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "14 January 2024",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "স্থিতিবিদ্যা - 2",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "15 January 2024",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "16 January 2024",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "তড়িৎ রসায়ন - 4 (MCQ Booster & Question Bank Analysis)",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "17 January 2024",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "ভৌত আলোকবিজ্ঞান - 3",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "18 January 2024",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "স্থিতিবিদ্যা - 3",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "19 January 2024",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "জৈব রসায়ন - 1",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "20 January 2024",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "চল তড়িৎ - 1",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "21 January 2024",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "স্থিতিবিদ্যা - 4",
+        "instructor": "Abhi Datta Tushar"
+      },
+      {
+        "date": "22 January 2024",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "23 January 2024",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "জৈব রসায়ন - 2",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "24 January 2024",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "চল তড়িৎ - 2",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "25 January 2024",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "সমতলে বস্তুকণার গতি - 1",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "26 January 2024",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "জৈব রসায়ন - 3",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "27 January 2024",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "চল তড়িৎ - 3",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "28 January 2024",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "সমতলে বস্তুকণার গতি - 2",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "29 January 2024",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "30 January 2024",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "জৈব রসায়ন - 4",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "31 January 2024",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "চল তড়িৎ - 4",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "1 February 2024",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "সমতলে বস্তুকণার গতি - 3",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "2 February 2024",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "জৈব রসায়ন - 5",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "3 February 2024",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "নিউক্লিয়ার পদার্থবিজ্ঞান - 1",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "4 February 2024",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Math",
+        "chapterTopic": "সমতলে বস্তুকণার গতি - 4",
+        "instructor": "Kazi Rakibul Hasan"
+      },
+      {
+        "date": "5 February 2024",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "6 February 2024",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "জৈব রসায়ন - 6",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "7 February 2024",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "নিউক্লিয়ার পদার্থবিজ্ঞান - 2",
+        "instructor": "Numeri Sattar Apar"
+      },
+      {
+        "date": "8 February 2024",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "জৈব রসায়ন - 7",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "9 February 2024",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "জৈব রসায়ন - 8",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "10 February 2024",
+        "day": "Saturday",
+        "classTime": "22:00",
+        "subject": "Physics",
+        "chapterTopic": "আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব - 1",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "11 February 2024",
+        "day": "Sunday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "জৈব রসায়ন - 9",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "12 February 2024",
+        "day": "Monday",
+        "classTime": "",
+        "subject": "",
+        "chapterTopic": "Weekly Exam",
+        "instructor": ""
+      },
+      {
+        "date": "13 February 2024",
+        "day": "Tuesday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "জৈব রসায়ন - 10",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "14 February 2024",
+        "day": "Wednesday",
+        "classTime": "23:00",
+        "subject": "Physics",
+        "chapterTopic": "আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব - 2",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "15 February 2024",
+        "day": "Thursday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "জৈব রসায়ন - 11",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "16 February 2024",
+        "day": "Friday",
+        "classTime": "21:00",
+        "subject": "Chemistry",
+        "chapterTopic": "জৈব রসায়ন - 12 (MCQ Booster & Question Bank Analysis)",
+        "instructor": "Sanjoy Chakraborty"
+      },
+      {
+        "date": "17 February 2024",
+        "day": "Saturday",
+        "classTime": "00:00",
+        "subject": "Physics",
+        "chapterTopic": "আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব - 3",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "21 February 2024",
+        "day": "Wednesday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "সেমিকন্ডাক্টর ও ইলেক্ট্রনিক্স - 1",
+        "instructor": "Apurbo Opu"
+      },
+      {
+        "date": "24 February 2024",
+        "day": "Saturday",
+        "classTime": "21:00",
+        "subject": "Physics",
+        "chapterTopic": "সেমিকন্ডাক্টর ও ইলেক্ট্রনিক্স - 2",
+        "instructor": "Apurbo Opu"
+      }
+    ]
+
+    const upcomingClassNoticeDiv = document.getElementById("upcoming-class-notice");
+
+    // Initialize current class index
+    let currentClassIndex = -1;
+
+    // Function to update the timer dynamically
+    // Function to update the timer dynamically
+    // Function to update the timer dynamically
+    // Function to update the timer dynamically
+    function updateTimer() {
+      setInterval(function () {
+        const currentClass = classOutlineData[currentClassIndex];
+        const classDateTime = new Date(currentClass.date + " " + currentClass.classTime);
+        const currentDate = new Date();
+
+        if (classDateTime >= currentDate) {
+          const timeLeft = classDateTime - currentDate;
+          const daysLeft = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+          const hoursLeft = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutesLeft = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+          const secondsLeft = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+          document.getElementById("day-timer").textContent = `${daysLeft}d`;
+          document.getElementById("hour-timer").textContent = `${hoursLeft}h`;
+          document.getElementById("minute-timer").textContent = `${minutesLeft}m`;
+          document.getElementById("second-timer").textContent = `${secondsLeft}s`;
+
+          // Calculate the percentage of time remaining
+          const totalTime = classDateTime - currentDate;
+          const remaining = timeLeft;
+          const percentage = ((totalTime - remaining) / totalTime) * 100;
+
+          // // Update the progress ring
+          // document.getElementById("day-progress-fill").style.transform = `rotate(${percentage * 3.6}deg)`;
+          // document.getElementById("hour-progress-fill").style.transform = `rotate(${percentage * 3.6}deg)`;
+          // document.getElementById("minute-progress-fill").style.transform = `rotate(${percentage * 3.6}deg)`;
+          // document.getElementById("second-progress-fill").style.transform = `rotate(${percentage * 3.6}deg)`;
+        } else {
+          document.getElementById("day-timer").textContent = "0d";
+          document.getElementById("hour-timer").textContent = "0h";
+          document.getElementById("minute-timer").textContent = "0m";
+          document.getElementById("second-timer").textContent = "0s";
+        }
+      },
+        1000); // Update every second
+    }
+
+
+
+
+    // Update the timer when showing the upcoming class
+    function updateClassNotice() {
+      if (currentClassIndex === -1) {
+        // ...
+      } else {
+        // Show class details with icons
+        const currentClass = classOutlineData[currentClassIndex];
+        document.getElementById("class-date").textContent = currentClass.date;
+        document.getElementById("class-day").textContent = currentClass.day;
+        document.getElementById("class-time").textContent = currentClass.classTime;
+        document.getElementById("class-subject").textContent = currentClass.subject;
+        document.getElementById("class-topic").textContent = currentClass.chapterTopic;
+        document.getElementById("class-instructor").textContent = currentClass.instructor;
+
+        // Update the timer
+        updateTimer();
+      }
+    }
+
+    // Function to show the next class
+    function showNextClass() {
+      if (currentClassIndex < classOutlineData.length - 1) {
+        currentClassIndex++;
+        updateClassNotice();
+      }
+    }
+
+    // Function to show the previous class
+    function showPreviousClass() {
+      if (currentClassIndex > 0) {
+        currentClassIndex--;
+        updateClassNotice();
+      }
+    }
+
+    // Function to show the upcoming class
+    function showUpcomingClass() {
+      const currentDate = new Date(); // Get the current date and time of the device
+      let nearestClassIndex = -1;
+      let nearestClassTime = Infinity;
+
+      // Find the nearest upcoming class
+      for (let i = 0; i < classOutlineData.length; i++) {
+        const classDateTime = new Date(classOutlineData[i].date + " " + classOutlineData[i].classTime);
+        if (classDateTime >= currentDate && classDateTime < nearestClassTime) {
+          nearestClassTime = classDateTime;
+          nearestClassIndex = i;
+        }
+      }
+
+      currentClassIndex = nearestClassIndex;
+      updateClassNotice();
+    }
+
+    // Initialize class notice
+    showUpcomingClass();
+    function setupSubjectChapterSelector() {
+      // Define the mapping of subjects, papers, and chapters
+      const subjectMap = {
+        'Physics': {
+          'Paper-1': ['Chapter-2',
+            'Chapter-4',
+            'Chapter-5',
+            'Chapter-6',
+            'Chapter-7',
+            'Chapter-8',
+            'Chapter-10',
+            'Chapter-Archive'],
+          'Paper-2': ['Chapter-1',
+            'Chapter-2',
+            'Chapter-3',
+            'Chapter-7',
+            'Chapter-8',
+            'Chapter-9',
+            'Chapter-10',
+            'Chapter-Archive']
+        },
+        'Chemistry': {
+          'Paper-1': ['Chapter-1',
+            'Chapter-2',
+            'Chapter-3',
+            'Chapter-4',
+            'Chapter-5',
+            'Chapter-Archive'],
+          'Paper-2': ['Chapter-1',
+            'Chapter-2',
+            'Chapter-3',
+            'Chapter-4',
+            'Chapter-5',
+            'Chapter-Archive']
+        },
+        'Math': {
+          'Paper-1': ['Chapter-1',
+            'Chapter-3',
+            'Chapter-4',
+            'Chapter-7',
+            'Chapter-9',
+            'Chapter-10',
+            'Chapter-Archive'],
+          'Paper-2': ['Chapter-3',
+            'Chapter-4',
+            'Chapter-6',
+            'Chapter-7',
+            'Chapter-8',
+            'Chapter-9',
+            'Chapter-Archive']
+        }
+      };
+
+      // Get references to form elements
+      const subjectSelect = document.getElementById('subject');
+      const paperSelect = document.getElementById('paper');
+      const chapterSelect = document.getElementById('chapter');
+      const generateLinkButton = document.getElementById('generateLink');
+
+      // Function to populate paper options based on selected subject
+      function populatePapers() {
+        const selectedSubject = subjectSelect.value;
+        const papers = Object.keys(subjectMap[selectedSubject] || {});
+        paperSelect.innerHTML = ''; // Clear previous options
+        papers.forEach(paper => {
+          const option = document.createElement('option');
+          option.value = paper;
+          option.text = paper;
+          paperSelect.appendChild(option);
+        });
+      }
+
+      // Function to populate chapter options based on selected subject and paper
+      function populateChapters() {
+        const selectedSubject = subjectSelect.value;
+        const selectedPaper = paperSelect.value;
+        const chapters = subjectMap[selectedSubject][selectedPaper] || [];
+        chapterSelect.innerHTML = ''; // Clear previous options
+        chapters.forEach(chapter => {
+          const option = document.createElement('option');
+          option.value = chapter;
+          option.text = chapter;
+          chapterSelect.appendChild(option);
+        });
+      }
+
+      // Populate paper and chapter options initially
+      populatePapers();
+      populateChapters();
+
+      // Update paper options when subject changes
+      subjectSelect.addEventListener('change', () => {
+        populatePapers();
+        populateChapters(); // Reset chapter options
+      });
+
+      // Update chapter options when paper changes
+      paperSelect.addEventListener('change', () => {
+        populateChapters();
+      });
+
+      // Handle visiting the link when the button is clicked
+      generateLinkButton.addEventListener('click', () => {
+        const selectedSubject = subjectSelect.value;
+        const selectedPaper = paperSelect.value;
+        const selectedChapter = chapterSelect.value;
+
+        if (selectedChapter !== '') {
+          const link = `https://engineering23.aparsclassroom.com/${selectedSubject}/${selectedPaper}/${selectedChapter}`;
+          window.open(link);
+        }
+      });
+    }
+
+    // Call the setup function when the document is ready
+    document.addEventListener("DOMContentLoaded", setupSubjectChapterSelector);
+  </script>
+</body>
+
+</html>
